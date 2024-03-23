@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext", // Specifies the ECMAScript module code generation. Set to "ES2022" for ECMAScript 2022 modules.
+    "moduleResolution": "NodeNext", // Specifies how TypeScript should resolve modules. Set to "NodeNext" to follow Node.js module resolution rules.
+    "target": "ES2022", // Specifies the ECMAScript version the TypeScript compiler should target. Set to "ES2022" for ECMAScript 2022.
+    "sourceMap": false, // Enables the generation of source map files (.map) alongside the compiled JavaScript files for debugging purposes.
+    "outDir": "dist", // Specifies the output directory for compiled JavaScript files.
+    "allowSyntheticDefaultImports": true // Allows TypeScript to generate default imports for modules that only export one member.
+  },
+  "include": [
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
