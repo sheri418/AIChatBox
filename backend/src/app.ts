@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/api/v1");
+app.use("/api/v1");
 export default app;
 
 
