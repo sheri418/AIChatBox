@@ -1,8 +1,10 @@
-import { Router } from "express";
-import { getAllUsers, userlogin, userSignUp } from '../controllers/user-controller.js';
-import { loginValidator, signupValidator, validate } from '../utils/validators.js';
-const userRouter = Router();
-userRouter.get("/", getAllUsers);
-userRouter.post("/signup", validate(signupValidator), userSignUp);
-userRouter.post("/login", validate(loginValidator), userlogin);
-export default userRouter;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const user_controller_js_1 = require("../controllers/user-controller.js");
+const validators_js_1 = require("../utils/validators.js");
+const userRouter = (0, express_1.Router)();
+userRouter.get("/", user_controller_js_1.getAllUsers);
+userRouter.post("/signup", (0, validators_js_1.validate)(validators_js_1.signupValidator), user_controller_js_1.userSignUp);
+userRouter.post("/login", (0, validators_js_1.validate)(validators_js_1.loginValidator), user_controller_js_1.userlogin);
+exports.default = userRouter;

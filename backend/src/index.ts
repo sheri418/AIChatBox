@@ -1,5 +1,7 @@
 import app from "./app.js";
 import ConnectDatabase from './db/connection.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 //connection and listeners

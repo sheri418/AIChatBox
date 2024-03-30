@@ -1,6 +1,9 @@
-import { body } from "express-validator";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.signupValidator = exports.loginValidator = exports.validate = void 0;
+const express_validator_1 = require("express-validator");
 // Middleware function to handle validation
-export const validate = (validations) => {
+const validate = (validations) => {
     return async (req, res, next) => {
         // Run each validation chain
         for (const validation of validations) {
@@ -14,13 +17,14 @@ export const validate = (validations) => {
         next();
     };
 };
+exports.validate = validate;
 // Array of validation chains for login route
-export const loginValidator = [
-    body("email").trim().isEmail().withMessage("Valid email is required"),
-    body("password").trim().isLength({ min: 6 }).withMessage("Password must be at least 6 characters long")
+exports.loginValidator = [
+    (0, express_validator_1.body)("email").trim().isEmail().withMessage("Valid email is required"),
+    (0, express_validator_1.body)("password").trim().isLength({ min: 6 }).withMessage("Password must be at least 6 characters long")
 ];
 // Array of validation chains for signup route
-export const signupValidator = [
-    body("name").notEmpty().withMessage("Name is required"),
-    ...loginValidator,
+exports.signupValidator = [
+    (0, express_validator_1.body)("name").notEmpty().withMessage("Name is required"),
+    ...exports.loginValidator,
 ];

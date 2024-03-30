@@ -1,11 +1,13 @@
-import { connect } from "mongoose";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
 const ConnectDatabase = async () => {
     const mongoDbUrl = process.env.MONGODB_URL;
     if (!mongoDbUrl) {
         throw new Error("Url not provide");
     }
     try {
-        await connect(mongoDbUrl);
+        await (0, mongoose_1.connect)(mongoDbUrl);
         console.log("Database connected");
     }
     catch (error) {
@@ -13,4 +15,4 @@ const ConnectDatabase = async () => {
         throw new Error("Database Not Connected");
     }
 };
-export default ConnectDatabase;
+exports.default = ConnectDatabase;

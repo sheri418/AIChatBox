@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../models/User.js";
 import {hash,compare} from "bcrypt";
+import { createToken } from '../utils/token-manager';
+import { COOKIE_NAME } from '../utils/constant';
 
 
 
@@ -28,6 +30,30 @@ export const userlogin = async (req: Request, res: Response, next: NextFunction)
         if(!isPasswordCorrect){
             return res.status(403).send("Incorrect Password")
         }
+
+//create token and store cookies
+
+        res.clearCookie(COOKIE_NAME,{
+            httpOnly:true,
+            domain:"localhost",
+            signed:true,
+            path:"/",
+                    
+        });
+        const token=createToken (user._id.toString(),user.email,"7d");
+        const expires = new Date();
+
+        expires.setDate(expires.getDate()+7);
+        res.cookie(COOKIE_NAME, token,
+        {
+            path:"/",
+        domain:"localhost",
+            expires,
+            httpOnly:true,
+            signed:true,
+    });
+
+
        return res.status(200).json({ message: "User login up successfully", id: user._id.toString() });
     } catch (error) {
         console.error("Error login up user:", error);
