@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.signupValidator = exports.loginValidator = exports.validate = void 0;
+exports.chatCompletionValidator = exports.signupValidator = exports.loginValidator = exports.validate = void 0;
 const express_validator_1 = require("express-validator");
 // Middleware function to handle validation
 const validate = (validations) => {
@@ -26,5 +26,9 @@ exports.loginValidator = [
 // Array of validation chains for signup route
 exports.signupValidator = [
     (0, express_validator_1.body)("name").notEmpty().withMessage("Name is required"),
+    ...exports.loginValidator,
+];
+exports.chatCompletionValidator = [
+    (0, express_validator_1.body)("message").notEmpty().withMessage("Message is required"),
     ...exports.loginValidator,
 ];

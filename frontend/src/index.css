@@ -11,3 +11,17 @@ body{
 .image-inverted{
   /* filter:invert(100%) */
 }
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: '10px 20px'; 
+  margin: '0 10px'; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #ffcc00; /* Change to desired hover background color */
+  color: #ffffff; /* Change to desired hover text color */
+}
